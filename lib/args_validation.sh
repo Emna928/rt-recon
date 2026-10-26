@@ -45,8 +45,8 @@ validate_target (){
     if is_cidr "$t"; then 
     validate_ip "${t%/*}"
     local prefix=${t#*/}
-        if ! [[ $prefix =~ ^[0-9]+$ ]] || [[ $prefix -lt 8 ]] || [[ $prefix -gt 32 ]];then 
-          echo "[Error] CIDR prefix must be between 8 and 32" >&2
+        if ! [[ $prefix =~ ^[0-9]+$ ]] || [[ $prefix -lt 16 ]] || [[ $prefix -gt 32 ]];then 
+          echo "[Error] CIDR prefix must be between 16 and 32" >&2
           exit 1
         fi 
     else 

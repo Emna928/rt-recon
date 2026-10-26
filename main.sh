@@ -12,6 +12,8 @@ source $SCRIPT_DIR/lib/network.sh
 source $SCRIPT_DIR/lib/output.sh
 source $SCRIPT_DIR/lib/logging.sh
 
+
+export TERM_WIDTH=$(tput cols 2>/dev/null || echo 80)
 ################reports location####################
 if [[ -n "${RT_RECON_REPORTS:-}" ]];then 
   REPORTS_BASE="$RT_RECON_REPORTS"

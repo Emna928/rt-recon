@@ -8,15 +8,17 @@ NC="\033[0m"
 
 ################print banner function####################
 print_banner (){
+     
+line=$(printf '%*s' "${TERM_WIDTH:-80}" '' |tr ' ' '=')
 printf '%s'"${BLUE}"
-printf '%0.s=' {1..180}; echo
+echo "$line"
 if command -v figlet &>/dev/null; then 
    figlet -t -c -f standard "Modular Recon Framework"
 else 
     printf "Modular Recon Framework\n"
 fi
 printf "\n"
-printf '%0.s=' {1..180}; echo
+echo "$line"
 printf '%s'"${NC}"
 }
 
