@@ -19,31 +19,26 @@ RT-Recon_Framework is a reconnaissance toolkit written in native bash, designed 
 |  _ <| |_  |  _ <  __/ (_| (_) | | | | |  _|| | | (_| | | | | | |  __/\ V  V / (_) | |  |   < 
 |_| \_\\__| |_| \_\___|\___\___/|_| |_| |_|  |_|  \__,_|_| |_| |_|\___| \_/\_/ \___/|_|  |_|\_\
                                                                          
-```text  
+ 
   RT-Recon_Framework  Modular reconnaissance toolkit 
   For authorized security testing and internal red team engagement only 
- ```
-```text
- ######## USAGE:
+
+USAGE:
   ./main.sh --module <module_name> -t <target> -p <start_end> [-c <threads>] [-o <output_file>] [-s] [-H] [-m] [-l] [-v]
 
-```text
- ######## MODULES:
+ MODULES:
  host_discovery     Discover live hosts in an IP or CIDR range 
  nmap_wrapper       Wrapper around nmap, if installed
  port_scan          Scan ports with configurable concurrency
  service_detect     Banner grab and service parsing on open ports
  all                Run host_discovery, port_scan and service_detect in sequence
- ```
+ 
 
-```text
-######## REQUIRED OPTIONS:
+REQUIRED OPTIONS:
   --module <name>                    Module to run (see MODULES above)
   -t <target>                        Target IP or CIDR range (e.g. 192.168.1.10 or 192.168.1.0/24)
-```
 
-```text
-######## OPTIONAL OPTIONS:
+OPTIONAL OPTIONS:
   -h, --help          Show this help menu and exit
   -p <start-end>      Port range to scan (required for port_scan/service_detect;optional for host_discovery e.g. 1-1000)
   -c <n>              Max concurrent jobs / semaphore limit (default: 20)
@@ -53,26 +48,22 @@ RT-Recon_Framework is a reconnaissance toolkit written in native bash, designed 
   -H                  Write a colored HTML report
   -m                  Write a markdown report
   -l                  Display the content of scan.log if enabled
-```
 
-```text
-######## Examples
+Examples
 
-######### Basic port scan on a single host
+# Basic port scan on a single host
 rt-recon --module port_scan -t 192.168.1.10 -p 1-1000
 
-######### Host discovery across a subnet
+# Host discovery across a subnet
 rt-recon --module host_discovery -t 192.168.1.0/24
 
-######### Port scan with custom concurrency
+# Port scan with custom concurrency
 rt-recon --module port_scan -t 10.0.0.5 -p 1-65535 -c 50 -s -v
 
-######### Full recon with TXT, CSV, HTML and Markdown reports, and logging
+# Full recon with TXT, CSV, HTML and Markdown reports, and logging
 rt-recon --module all -t 10.0.0.5 -p 1-65535 -c 50 -o report.txt -s -H -m -l -v
-```
 
-```text
-######## EXIT CODES:
+ EXIT CODES:
   0     Success
   1     Invalid arguments or validation failure
   130   Interrupted by user (Ctrl+C)
